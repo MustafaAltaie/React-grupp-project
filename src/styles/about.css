@@ -1,0 +1,51 @@
+#aboutMainContainer{
+    padding: 70px 50px 0 50px;
+    text-align: center;
+}
+#aboutLogo{
+    position: absolute;
+    top: 20px;
+    left: 0;
+    width: 150px;
+}
+#aboutLogo > img{
+    width: 100%;
+    pointer-events: none;
+}
+#aboutMainContainer > h1{
+    color: #333;
+}
+#aboutMainContainer > h1 > span{
+    color: #d200ac;
+}
+#aboutMainContainer > p{
+    padding: 0 100px;
+}
+#aboutMainContainer > p > span{
+    color: #06f;
+    font-weight: bold;
+}
+#userWrapper{
+    display: flex;
+    gap: 10px;
+    margin: 30px 0;
+}
+.user{
+    width: 25%;
+    height: 420px;
+    background: #e5e5e5;
+    display: flex;
+    flex-direction: column;
+}
+.user > img{
+    width: 100%;
+    height: 80%;
+    object-fit: cover;
+}
+.user > div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    height: 20%;
+}
