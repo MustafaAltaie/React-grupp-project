@@ -1,8 +1,11 @@
 #accountWrapper{
     display: flex;
-    height: 90vh;
+    height: 85vh;
+    width: 80%;
+    margin: auto;
     background: #eee;
     user-select: none;
+    margin-top: 50px;
 }
 #accountLeftSection{
     position: relative;
