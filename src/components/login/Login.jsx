@@ -16,16 +16,9 @@ const Login = () => {
     const [keepSigned, setKeepSigned] = useState(true);
     // Submit signup
     const dispatch = useDispatch();
-    // Check if email existed or not
-    const signupState = useSelector(state => state.signupState);
     // Check if user is signed in
-    const isLogedin = useSelector(state => state.isLogedin);
+    const isLogedin = useSelector(state => state.login.isLogedin);
     const navigate = useNavigate();
-
-    useEffect(() => {
-        if (signupState) setSignIn(true);
-        else alert('The email is already exist');
-    }, [signupState]);
 
     const HandleSignup = () => {
         const newUser = {

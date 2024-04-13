@@ -6,7 +6,6 @@ const initialState = {
     isLogedin: false
 }
 
-console.log(JSON.parse(localStorage.getItem('storedLoginData')))
 const loginSlice = createSlice({
     name: 'login',
     initialState,
@@ -24,7 +23,10 @@ const loginSlice = createSlice({
                 state.loginDatabase = [...state.loginDatabase, newUser];
                 localStorage.setItem('storedLoginData', JSON.stringify(state.loginDatabase));
             }
-            else state.signupState = false;
+            else{
+                state.signupState = false;
+                alert('The email is already exist');
+            }
         },
         signinHandler: (state, action) => {
             state.isLogedin = state.loginDatabase.some(data => 
