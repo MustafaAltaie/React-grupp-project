@@ -1,26 +1,19 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
 
 const initialState = {
-    loginDatabase: JSON.parse(localStorage.getItem('storedLoginData')) || [
-        {
-            id: nanoid(),
-            userName: 'Mustafa',
-            email: 'email',
-            password: '44',
-            imageUrl: 'https://i.ibb.co/jJrxfjC/01.jpg'
-        }
-    ],
+    loginDatabase: JSON.parse(localStorage.getItem('storedLoginData')) || [],
     signupState: true,
     isLogedin: false
 }
 
-const todoSlice = createSlice({
-    name: 'todo',
+console.log(JSON.parse(localStorage.getItem('storedLoginData')))
+const loginSlice = createSlice({
+    name: 'login',
     initialState,
     reducers: {
         addUser: (state, action) => {
             const newUser = {
-                id: action.payload.id,
+                id: nanoid(),
                 userName: action.payload.userName,
                 email: action.payload.email,
                 password: action.payload.password,
@@ -41,6 +34,6 @@ const todoSlice = createSlice({
     }
 });
 
-export const { addUser, signinHandler } = todoSlice.actions;
+export const { addUser, signinHandler } = loginSlice.actions;
 
-export default todoSlice.reducer;
+export default loginSlice.reducer;

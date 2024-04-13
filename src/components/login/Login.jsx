@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
-import { addUser, signinHandler } from "../../features/todoSlice";
+import { addUser, signinHandler } from "../../features/loginSlice";
 import { NavLink, useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -29,13 +29,13 @@ const Login = () => {
 
     const HandleSignup = () => {
         const newUser = {
-            id: Date.now(),
             userName: userName,
             email: email,
             password: password,
             imageUrl: imageUrl
         };
         dispatch(addUser(newUser));
+        setSignIn(true);
     }
 
     useEffect(() => {
