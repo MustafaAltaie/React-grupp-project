@@ -26,3 +26,9 @@ input[type='checkbox']{
   height: 20px;
   cursor: pointer;
 }
+
+#AppMainContainer{
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
