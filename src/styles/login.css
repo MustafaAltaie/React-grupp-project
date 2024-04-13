@@ -1,0 +1,91 @@
+#accountWrapper{
+    display: flex;
+    height: 90vh;
+    background: #eee;
+    user-select: none;
+}
+#accountLeftSection{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    background: #1d2e3f;
+    color: #fff;
+    width: 40%;
+    padding: 100px;
+    text-align: center;
+    overflow: hidden;
+}
+#accountLeftSection > img{
+    position: absolute;
+    opacity: 0.1;
+}
+#accountLeftSection p{
+    color: #ffffffaa;
+    line-height: 1.3em;
+}
+#accountLeftSection > h1, #accountLeftSection span{
+    color: #fab143;
+}
+#accountRightSection{
+    position: relative;
+    width: 60%;
+    overflow: hidden;
+}
+#accountRightSection > div{
+    position: absolute;
+    padding: 50px 100px;
+    top: 50%;
+    width: 100%;
+    transition: 0.4s;
+}
+#accountRightSection input[type='text'], #accountRightSection input[type='password']{
+    width: 100%;
+    margin-bottom: 30px;
+    background: #eee;
+    outline: none;
+}
+#accountRightSection label{
+    padding-left: 5px;
+    cursor: pointer;
+}
+#accountRightSection span{
+    color: #963ebe;
+}
+#accountRightSection h1{
+    margin-bottom: 20px;
+}
+#accountRightSection span{
+    cursor: pointer;
+    font-weight: bold;
+}
+#accountRightSection button{
+    width: 100%;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+#accountRightSection p{
+    position: absolute;
+    background: #eee;
+    color: #963ebe;
+}
+#signupWrapper > p, #signinWrapper > p{
+    pointer-events: none;
+    transition: 0.2s;
+}
+#accountRightSection > div > div{
+    margin: 20px 0;
+}
+
+#loginLogo{
+    position: absolute;
+    top: 20px;
+    left: 0;
+    width: 150px;
+}
+#loginLogo > img{
+    width: 100%;
+    pointer-events: none;
+}
