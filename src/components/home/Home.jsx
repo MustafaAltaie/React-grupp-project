@@ -6,7 +6,7 @@ const Home = () => {
     <>
     <header>Header</header>
     <main>
-      Main
+      <h1 id='addNewTaskBtn'>+</h1>
     </main>
     </>
   )
