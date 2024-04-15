@@ -84,9 +84,10 @@
 
 #loginLogo{
     position: absolute;
-    top: 20px;
+    top: 0;
     left: 0;
-    width: 150px;
+    width: 100px;
+    padding: 10px;
 }
 #loginLogo > img{
     width: 100%;
