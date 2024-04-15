@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
 const About = () => {
-    const users = useSelector(state => state.about.users);
+    const users = useSelector(state => state.login.loginDatabase);
 
     return (
         <div id='aboutMainContainer'>

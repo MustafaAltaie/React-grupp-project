@@ -4,9 +4,10 @@
 }
 #aboutLogo{
     position: absolute;
-    top: 20px;
+    top: 0;
     left: 0;
     width: 150px;
+    padding: 0 10px;
 }
 #aboutLogo > img{
     width: 100%;

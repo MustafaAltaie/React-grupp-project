@@ -16,7 +16,8 @@ const loginSlice = createSlice({
                 userName: action.payload.userName,
                 email: action.payload.email,
                 password: action.payload.password,
-                imageUrl: action.payload.imageUrl
+                imageUrl: action.payload.imageUrl,
+                joinDate: new Date().toLocaleDateString()
             };
             state.signupState = !state.loginDatabase.some(data => data.email === newUser.email);
             if(state.signupState === true){
