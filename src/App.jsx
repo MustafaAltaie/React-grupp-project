@@ -8,16 +8,14 @@ import Admin from './components/admin/Admin';
 function App() {
 
   return (
-    <div id="AppMainContainer">
-      <BrowserRouter>
-        <Routes>
-          <Route path='/login' element={<Login />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/admin" element={<Admin />} />
-          <Route path='/' element={<Home />} />
-        </Routes>
-      </BrowserRouter>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/login' element={<Login />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/admin" element={<Admin />} />
+        <Route path='/' element={<Home />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 

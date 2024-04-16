@@ -1,6 +1,11 @@
+#homeMainContainer{
+    display: flex;
+    flex-direction: column;
+}
 main{
     background: #eee;
-    flex: 1
+    flex: 1;
+    height: 100vh;
 }
 #addNewTaskBtn{
     z-index: 100;
