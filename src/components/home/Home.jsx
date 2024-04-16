@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { addTask } from "../../features/taskSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Colums from "./Colums";
 
 const Home = () => {
@@ -9,7 +9,7 @@ const Home = () => {
   const [content, setContent] = useState('');
   const [endDate, setEndDate] = useState('');
   const [columnName, setColumnName] = useState('');
-  const columns = ['Todo', 'Tasks', 'In Progress', 'Done'];
+  const columns = useSelector(state => state.columns.columns);
   const dispatch = useDispatch();
 
   const prepareAdd = () => {
