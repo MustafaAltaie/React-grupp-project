@@ -27,13 +27,7 @@ const Colums = () => {
     <div className="columnContainer">
       <div className='column'>
         <h2>Todo</h2>
-        <div className='columnWrapper'>
-          <div className="task">task</div>
-          <div className="task">task</div>
-          <div className="task">task</div>
-          <div className="task">task</div>
-          <div className="task">task</div>
-        </div>
+        <div className='columnWrapper'></div>
       </div>
       {columns.map(column => 
       <Column key={column} column={column} />
