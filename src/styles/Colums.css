@@ -11,11 +11,12 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  align-items: center;
   border: solid 1px #888;
   padding: 20px;
   height: 100%;
   min-width: 400px;
+  max-width: 400px;
   border-radius: 20px;
   background: #ddd;
   transition: 0.3s;
@@ -25,24 +26,20 @@
   color: #06f;
   padding-bottom: 10px;
   text-align: center;
+  width: 100%;
 }
 .columnWrapper{
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 20px;
+  max-height: 100%;
+  padding-top: 20px;
   overflow-y: scroll;
   scrollbar-width: none;
 }
 .columnWrapper::-webkit-scrollbar{
   display: none;
 }
-.task{
-  border: solid 1px #aaa;
-  border-radius: 10px;
-  padding: 5px;
-  min-height: 85px;
-}
-
 .columnContainer > h1{
   min-width: 40px;
   height: 40px;
@@ -63,8 +60,8 @@
 
 .deleteColumnBtn{
   position: absolute;
-  top: 10px;
-  left: 10px;
+  top: -10px;
+  left: 0;
   padding: 15px;
   font-weight: normal;
   cursor: pointer;
@@ -73,4 +70,79 @@
 }
 .column:hover > .deleteColumnBtn{
   display: block;
+}
+
+/* Task */
+.task{
+  border: solid 1px #888;
+  background: #ccc;
+  border-radius: 10px;
+  padding: 10px;
+  min-width: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.taskHeader{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.taskTitleSettingWrapper{
+  display: flex;
+  gap: 10px;
+}
+.taskTitleSettingWrapper > p{
+  color: #06f;
+}
+.taskSettingBtn{
+  display: flex;
+  opacity: 0;
+  pointer-events: none;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+.taskSettingBtn > div{
+  width: 4px;
+  height: 4px;
+  clip-path: circle();
+  background: #444;
+}
+.task:hover .taskSettingBtn{
+  opacity: 1;
+  pointer-events: unset;
+}
+.taskImageWrapper{
+  display: flex;
+  gap: 5px;
+}
+.taskImageWrapper > img{
+  width: 35px;
+  height: 35px;
+  clip-path: circle();
+}
+.taskContent{
+  padding: 10px;
+  font-size: 14px;
+  min-height: 40px;
+  scrollbar-width: none;
+  margin: 5px 0;
+}
+.taskFooter{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.taskFooter > h5{
+  border-radius: 50%;
+  background: #bbb;
+  padding: 5px 10px;
+}
+.taskFooter > p{
+  color: #777;
+  font-size: 14px;
 }
