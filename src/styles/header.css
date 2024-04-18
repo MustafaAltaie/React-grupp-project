@@ -1,0 +1,58 @@
+
+header nav {
+    background-color: rgba(0, 0, 0, .1);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2px 20px;
+    user-select: none;
+}
+
+nav img {
+    width: 2.2cm;
+}
+
+nav ul {
+    display: flex;
+    gap: 5px;
+    list-style: none;
+}
+nav ul > a{
+    padding: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    text-decoration: none;
+    color: #000;
+}
+nav ul > a:hover{
+    background: #00000011;
+}
+nav > div{
+    display: flex;
+    gap: 5px;
+}
+nav > div > a{
+    padding: 10px;
+    text-decoration: none;
+    color: #000;
+    font-size: 18px;
+}
+nav > div > a:hover{
+    background: #00000011;
+}
+
+.btn {
+    cursor: pointer;
+    color: #333333;
+    background-color: #ffffff4f;
+    padding: 10px;
+    border-radius: 5px;
+    transition: all 0.5s ease;
+    font-size: larger;
+}
+
+.btn:hover {
+    color: white;
+    background-color: #333333;
+}

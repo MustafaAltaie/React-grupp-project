@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { addTask } from "../../features/taskSlice";
 import { useDispatch, useSelector } from "react-redux";
 import Colums from "./Colums";
+import Header from "./Header";
 
 const Home = () => {
   const [menu, setMenu] = useState(false);
@@ -40,7 +41,7 @@ const Home = () => {
 
   return (
     <div id='homeMainContainer'>
-      <header>Header</header>
+      <Header />
       <main>
         <h1
         id='addNewTaskBtn'
