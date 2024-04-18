@@ -22,22 +22,23 @@ const Column = ({ column, tasks }) => {
                 column === task.columnName &&
                 <div className='task' key={task.id}>
                     <div className='taskHeader'>
-                    <div className="taskTitleSettingWrapper">
-                        <p>{task.title}</p>
-                        <div className='taskSettingBtn'>
-                        <div></div>
-                        <div></div>
-                        <div></div>
+                        <div className="taskTitleSettingWrapper">
+                            <p>{task.title}</p>
+                            <div className='taskSettingBtn'>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
                         </div>
-                    </div>
-                    <div className='taskImageWrapper'>
-                    {task.assignees.map(user => <img key={user.id} src={user.imageUrl} alt="Image" />)}
-                    </div>
+                        <div className='taskImageWrapper'>
+                            {task.assignees.map(user =>
+                            <img key={user.id} src={user.imageUrl} alt="Image" />)}
+                        </div>
                     </div>
                     <p className='taskContent'>{task.content}</p>
                     <div className='taskFooter'>
-                    <h5>P{task.priority}</h5>
-                    <p>{task.endDate}</p>
+                        <h5>P{task.priority}</h5>
+                        <p>{task.endDate}</p>
                     </div>
                 </div>
                 )}
