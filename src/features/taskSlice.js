@@ -3,8 +3,7 @@ import { createSlice, nanoid } from "@reduxjs/toolkit";
 const initialState = {
   tasks: JSON.parse(localStorage.getItem('items')) || []
 }
-// localStorage.removeItem('items')
-console.log(JSON.parse(localStorage.getItem('items')))
+
 const taskSlice = createSlice({
   name: 'tasks',
   initialState,

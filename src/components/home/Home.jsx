@@ -35,10 +35,6 @@ const Home = () => {
     : setAssignees([...assignees, user]);
   }
 
-  useEffect(() => {
-    console.log(assignees)
-  }, [assignees]);
-
   return (
     <div id='homeMainContainer'>
       <Header />

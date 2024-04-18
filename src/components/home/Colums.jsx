@@ -9,6 +9,7 @@ const Colums = () => {
   const dispatch = useDispatch();
   const columns = useSelector(state => state.columns.columns);
   const tasks = useSelector(state => state.tasks.tasks);
+  const columnPath = useSelector(state => state.columns.column);
 
   const prepareColumn = () => {
     dispatch(newColumnHandler(newColumn));
@@ -26,10 +27,10 @@ const Colums = () => {
   return (
     <>
     <div className="columnContainer">
+      {(columnPath === null || columnPath === 'Todo') &&
       <div className='column'>
         <h2>Todo</h2>
         <div className='columnWrapper'>
-          {/* {tasks.map(task => task.columnName === 'Todo' ? )} */}
           {tasks.map(task => task.columnName === 'Todo' &&
           <div className='task' key={task.id}>
             <div className='taskHeader'>
@@ -42,7 +43,8 @@ const Colums = () => {
                 </div>
               </div>
               <div className='taskImageWrapper'>
-                {task.assignees.map(user => <img key={user.id} src={user.imageUrl} alt="Image" />)}
+                {task.assignees.map(user =>
+                <img key={user.id} src={user.imageUrl} alt="Image" />)}
               </div>
             </div>
             <p className='taskContent'>{task.content}</p>
@@ -53,9 +55,9 @@ const Colums = () => {
           </div>
           )}
         </div>
-      </div>
+      </div>}
       {columns.map(column =>
-      <Column key={column} column={column} tasks={tasks} />
+      (columnPath === column || columnPath === null) && <Column key={column} column={column} tasks={tasks} />
       )}
 
       {columnMenu &&

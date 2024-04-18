@@ -18,14 +18,14 @@ nav ul {
     gap: 5px;
     list-style: none;
 }
-nav ul > a{
+nav ul > li{
     padding: 10px;
     cursor: pointer;
     font-size: 18px;
     text-decoration: none;
     color: #000;
 }
-nav ul > a:hover{
+nav ul > li:hover{
     background: #00000011;
 }
 nav > div{
