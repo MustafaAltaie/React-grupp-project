@@ -1,11 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 import loginReducer from '../features/loginSlice';
-import aboutReducer from '../features/aboutSlice';
+import adminReducer from '../features/adminSlice';
+import taskReducer from '../features/taskSlice';
+import columnReducer from '../features/columnSlice';
 
 export const store = configureStore({
     reducer: {
         login: loginReducer,
-        about: aboutReducer
+        admin: adminReducer,
+        tasks: taskReducer,
+        columns: columnReducer
     }
 });

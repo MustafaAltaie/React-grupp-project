@@ -4,9 +4,10 @@
 }
 #aboutLogo{
     position: absolute;
-    top: 20px;
+    top: 0;
     left: 0;
     width: 150px;
+    padding: 0 10px;
 }
 #aboutLogo > img{
     width: 100%;
@@ -16,7 +17,7 @@
     color: #333;
 }
 #aboutMainContainer > h1 > span{
-    color: #d200ac;
+    color: #d08700;
 }
 #aboutMainContainer > p{
     padding: 0 100px;

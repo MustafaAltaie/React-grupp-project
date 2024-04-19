@@ -9,7 +9,7 @@ button{
   padding: 15px;
   border-radius: 5px;
   border: none;
-  background: #963ebe;
+  background: #06a;
   color: white;
   cursor: pointer;
 }
@@ -25,10 +25,4 @@ input[type='checkbox']{
   width: 20px;
   height: 20px;
   cursor: pointer;
-}
-
-#AppMainContainer{
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
 }
