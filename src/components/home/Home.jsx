@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { addTask } from "../../features/taskSlice";
 import { useDispatch, useSelector } from "react-redux";
 import Colums from "./Colums";
 import Header from "./Header";
+import Settings from "./Settings";
 
 const Home = () => {
   const [menu, setMenu] = useState(false);
@@ -41,8 +42,8 @@ const Home = () => {
       <main>
         <h1
         id='addNewTaskBtn'
-        onClick={() => setMenu(!menu)} style={ menu ? {transform: 'rotate(135deg)', top: '180px', left: '50px'} : {transform: 'rotate(0deg)', top: '100px', left: '0'}}
-        title={menu ? 'Close' : 'Add Task'}
+        onClick={() => setMenu(!menu)} style={ menu ? {transform: 'rotate(135deg)', top: '130px', left: '50px'} : {transform: 'rotate(0deg)', top: '100px', left: '0'}}
+        title={menu ? 'Close' : 'New Task'}
         >+</h1>
         {menu &&
         <div id="newTaskForm">
@@ -81,14 +82,19 @@ const Home = () => {
               <p
               key={user.id}
               onClick={() => handleAssignees(user)}
-              style={assignees.includes(user) ? {background: '#06f', color: '#fff'} : {background: '#ddd', color: '#000'}}
+              style={assignees.includes(user) ? {background: '#070'} : {background: '#333'}}
               >{user.userName}</p>)}
             </div>
           </div>
-          {title.trim() && content.trim() && endDate.trim() && columnName.trim() &&
-          <button onClick={prepareAdd}>Add Task</button>}
+          <button
+          style={
+            (title.trim() && content.trim() && endDate.trim() && columnName.trim())
+            ? { background: '#06f', pointerEvents: 'unset' }
+            : { background: '#aaa', pointerEvents: 'none' }}
+          onClick={prepareAdd}>Add Task</button>
         </div>}
         <Colums />
+        <Settings />
       </main>
     </div>
   )

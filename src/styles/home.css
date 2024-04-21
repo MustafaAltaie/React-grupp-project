@@ -29,7 +29,7 @@ main{
     z-index: 90;
     position: absolute;
     left: 50px;
-    top: 180px;
+    top: 130px;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -80,10 +80,13 @@ main{
 }
 .newTaskAssignees > p{
     background: #ddd;
-    color: #000;
+    color: #fff;
     font-size: 14px;
     user-select: none;
     padding: 10px;
     border-radius: 5px;
+    font-size: 18px;
     cursor: pointer;
+    letter-spacing: 1px;
+    font-family: 'Thasadith', sans-serif;
 }

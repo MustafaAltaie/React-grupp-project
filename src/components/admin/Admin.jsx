@@ -6,12 +6,13 @@ const Admin = () => {
     const participants = useSelector(state => state.login.loginDatabase);
 
     return (
+        <>
+        <NavLink to='/'>
+        <div id='adminLogo'>
+            <img src="/src/images/logo.png" alt="Logo" />
+        </div>
+        </NavLink>
         <div id='adminMainContainer'>
-            <NavLink to='/'>
-            <div id='adminLogo'>
-                <img src="/src/images/logo.png" alt="Logo" />
-            </div>
-            </NavLink>
             <div id="participantWrapper">
                 <div className="participant">
                     <div>
@@ -37,6 +38,7 @@ const Admin = () => {
                 <Participant key={index} index={index} participant={participant} />)}
             </div>
         </div>
+        </>
     )
 }
 

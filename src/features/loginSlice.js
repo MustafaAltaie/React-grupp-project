@@ -16,7 +16,7 @@ const loginSlice = createSlice({
                 userName: action.payload.userName,
                 email: action.payload.email,
                 password: action.payload.password,
-                imageUrl: action.payload.imageUrl,
+                imageUrl: action.payload.imageUrl || 'https://cdn-icons-png.flaticon.com/512/4042/4042171.png',
                 joinDate: new Date().toLocaleDateString()
             };
             state.signupState = !state.loginDatabase.some(data => data.email === newUser.email);
