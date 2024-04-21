@@ -1,16 +1,14 @@
 #adminMainContainer{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 80%;
     min-height: 80%;
-    margin: auto;
     padding: 20px;
     background: #f2f2f2;
     border-radius: 20px;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    scrollbar-width: none;
-}
-#adminMainContainer::-webkit-scrollbar{
-    display: none;
+    overflow: hidden;
 }
 #adminLogo{
     position: absolute;
@@ -36,7 +34,7 @@
     height: 120px;
     background: #e5e5e5;
     border-radius: 10px;
-    border: solid 1px #ccc;
+    border: solid 1px #444;
     transition: 0.5s;
 }
 .participant > div{
@@ -61,8 +59,8 @@
 }
 .participant > div:nth-child(2){
     width: 12.5%;
-    border-right: solid 1px #aaa;
-    border-left: solid 1px #aaa;
+    border-right: solid 1px #777;
+    border-left: solid 1px #777;
 }
 .participant > div:nth-child(3){
     width: 25%;
@@ -70,12 +68,12 @@
 }
 .participant > div:nth-child(4){
     width: 25%;
-    border-right: solid 1px #aaa;
-    border-left: solid 1px #aaa;
+    border-right: solid 1px #777;
+    border-left: solid 1px #777;
 }
 .participant > div:nth-child(5){
     width: 15%;
-    border-right: solid 1px #aaa;
+    border-right: solid 1px #777;
 }
 .participant > div:nth-child(6){
     width: 10%;

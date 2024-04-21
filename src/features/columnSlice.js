@@ -12,7 +12,7 @@ const columnSlice = createSlice({
         newColumnHandler: (state, action) => {
             const columnName = action.payload;
             let isUsed = state.columns.some(column => column === action.payload);
-            isUsed ? alert('Column is already created') :
+            isUsed ? alert('Board has already been created') :
             state.columns = [...state.columns, columnName];
             localStorage.setItem('columns', JSON.stringify(state.columns));
         },

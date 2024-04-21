@@ -23,10 +23,7 @@ const Participant = ({ index, participant }) => {
 
     const prepareDeletion = () => {
         setIsDeleted(true);
-        setTimeout(() => {
-            dispatch(handleDelete(participant.id));
-            setIsDeleted(false);
-        }, 500);
+        dispatch(handleDelete(participant.id));
     }
 
     const prepareUpdate = (e) => {
@@ -44,10 +41,11 @@ const Participant = ({ index, participant }) => {
     }
 
     return (
+        !isDeleted &&
         <div
         className="participant"
         key={participant.id}
-        style={!start ? {transform: `translateX(${index % 2 === 0 ? 110 : -110}%)`, opacity: 0} : start && !isDeleted ? {transform: `translateX(0)`} : {transform: `translateX(-110%)`}}>
+        style={!start ? {transform: `translateX(${index % 2 === 0 ? 110 : -110}%)`, opacity: 0} : {transform: `translateX(0)`}}>
             <div>
                 <p>{participant.id}</p>
             </div>

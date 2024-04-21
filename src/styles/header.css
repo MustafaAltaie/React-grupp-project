@@ -1,12 +1,30 @@
-
+header{
+    z-index: 100;
+    position: relative;
+}
+header::before, header::after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    background: #00000088;
+    bottom: -10px;
+    transform: rotate(1deg);
+    filter: blur(5px);
+}
+header::after{
+    z-index: -1;
+    transform: rotate(-1deg);
+}
 header nav {
-    background-color: rgba(0, 0, 0, .1);
+    background-color: #ddd;
     backdrop-filter: blur(10px);
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 2px 20px;
     user-select: none;
+    min-height: 85px;
 }
 
 nav img {
@@ -24,6 +42,10 @@ nav ul > li{
     font-size: 18px;
     text-decoration: none;
     color: #000;
+    border-radius: 4px;
+    font-family: 'Thasadith', sans-serif;
+    font-weight: bold;
+    transition: 0.2s;
 }
 nav ul > li:hover{
     background: #00000011;
@@ -37,6 +59,8 @@ nav > div > a{
     text-decoration: none;
     color: #000;
     font-size: 18px;
+    border-radius: 4px;
+    transition: 0.2s;
 }
 nav > div > a:hover{
     background: #00000011;
@@ -55,4 +79,22 @@ nav > div > a:hover{
 .btn:hover {
     color: white;
     background-color: #333333;
+}
+
+#navSetting{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 3px;
+    padding: 0 15px;
+    cursor: pointer;
+}
+#navSetting > div{
+    width: 4px;
+    height: 4px;
+    clip-path: circle();
+    background: #000;
+}
+#navSetting:hover > div{
+    background: #06f;
 }
