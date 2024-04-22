@@ -58,7 +58,7 @@ const Colums = () => {
   }
 
   return (
-    <>
+    <div id='columnMainContainer'>
     <div className="columnContainer">
       {(columnPath === null || columnPath === 'Todo') &&
       <div className='column' style={storedStyle}>
@@ -115,7 +115,7 @@ const Colums = () => {
     </div>
 
     <Modal />
-    </>
+    </div>
   ); 
 }
 

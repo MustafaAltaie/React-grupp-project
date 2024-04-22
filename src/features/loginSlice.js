@@ -32,7 +32,8 @@ const loginSlice = createSlice({
         signinHandler: (state, action) => {
             state.isLogedin = state.loginDatabase.some(data => 
                 data.email === action.payload.email && data.password === action.payload.password
-            )
+            );
+            localStorage.setItem('userAccount', JSON.stringify(state.loginDatabase.filter(user => user.email === action.payload.email)));
         }
     }
 });
