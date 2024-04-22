@@ -1,19 +1,25 @@
+#columnMainContainer{
+  position: relative;
+  height: 100%;
+  overflow-x: scroll;
+}
+#columnMainContainer::-webkit-scrollbar{
+  background: #00000000;
+  height: 10px;
+}
+#columnMainContainer::-webkit-scrollbar-thumb{
+  border-radius: 20px;
+  background: #777;
+}
 .columnContainer{
+  position: absolute;
   display: flex;
   justify-content: center;
   padding: 40px 50px 10px 50px;
   height: 100%;
   gap: 15px;
   user-select: none;
-  overflow-x: scroll;
   overflow-y: hidden;
-}
-.columnContainer::-webkit-scrollbar{
-  background: #00000000;
-}
-.columnContainer::-webkit-scrollbar-thumb{
-  border-radius: 20px;
-  background: #777;
 }
 .column{
   position: relative;
