@@ -90,3 +90,22 @@ main{
     letter-spacing: 1px;
     font-family: 'Thasadith', sans-serif;
 }
+
+#backgroundImageWrapper{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+#backgroundImageWrapper > img, #backgroundImageWrapper > div{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+#backgroundImageWrapper > div{
+    z-index: 1;
+    background: #ffffff87;
+}

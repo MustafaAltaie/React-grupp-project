@@ -33,7 +33,7 @@ const Colums = () => {
     padding: padding ? padding + 'px' : '20px',
     borderRadius: radius ? radius + 'px' : '10px',
     border: `solid ${borderSize ? borderSize + 'px' : '1px'} ${borderColor ? borderColor : '#005fa8'}` || 'solid 1px #005fa8',
-    background: taskColor ? taskColor : '#ddd',
+    background: taskColor ? taskColor : '#f5f5f5',
 }
 
   const prepareColumn = () => {

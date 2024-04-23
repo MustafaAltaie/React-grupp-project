@@ -12,7 +12,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    padding: 8px;
+    padding: 5px;
     cursor: pointer;
 }
 #settingsMenu{
@@ -21,12 +21,12 @@
     right: 0;
     transform: translate(0%, -50%);
     width: 400px;
-    padding: 20px;
+    padding: 15px;
     background: #ddd;
     border-radius: 15px 0 0 15px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 15px;
     box-shadow: 0 0 10px #00000055;
     border: solid 1px #fff;
     pointer-events: all;
@@ -41,7 +41,7 @@
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
-    padding: 20px;
+    padding: 15px;
 }
 .settingFooter{
     border-top: solid 1px #aaa;
@@ -58,5 +58,75 @@
 .settingFooter > i{
     color: #b00075;
     font-size: 12px;
+    cursor: pointer;
+}
+
+#galleryWrapper{
+    position: relative;
+    overflow: hidden;
+}
+#gallerySettingsBtn{
+    position: absolute;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    right: 3px;
+    padding: 0 7px;
+}
+#gallerySettingsBtn > div{
+    width: 4px;
+    height: 4px;
+    clip-path: circle();
+    background: #000;
+}
+#gallery{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    max-height: 200px;
+    overflow-y: scroll;
+    padding: 0;
+    border-top: 10px solid #d2d2d2;
+    border-bottom: 10px solid #d2d2d2;
+    scrollbar-width: none;
+}
+#gallery > div{
+    height: 100px;
+    cursor: pointer;
+}
+#gallery > div > img{
+    height: 100%;
+    width: 100%;
+    pointer-events: none;
+}
+#gallerySettingsMenu{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: 0;
+    overflow: hidden;
+    border-radius: 0 0 20px 20px;
+    transition: 0.4s;
+}
+#gallerySettingsMenu > p, #gallerySettingsMenu > input[type='text']{
+    outline: none;
+    background: #eee;
+    border-radius: 0;
+    padding: 10px;
+    margin-top: -1px;
+    border-top: solid 1px #bbb;
+    text-align: center;
+    font-size: 14px;
+}
+#gallerySettingsMenu > input[type='text']{
+    background: #fff;
+}
+#gallerySettingsMenu > p:hover{
+    background: #ddd;
     cursor: pointer;
 }
