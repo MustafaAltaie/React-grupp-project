@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { addTask } from "../../features/taskSlice";
 import { useDispatch, useSelector } from "react-redux";
 import Colums from "./Colums";
@@ -16,6 +16,20 @@ const Home = () => {
   const columns = useSelector(state => state.columns.columns);
   const users = useSelector(state => state.login.loginDatabase);
   const dispatch = useDispatch();
+  const isSlidePlayed = useSelector(state => state.settings.isSlidePlayed);
+  const slideshowSpeed = useSelector(state => state.settings.slideshowSpeed);
+  const images = useSelector(state => state.settings.gallery);
+  const useWhiteBack = useSelector(state => state.settings.useWhiteBack);
+  const [counter, setCounter] = useState(0);
+
+  useEffect(() => {
+    const accountInterval = setInterval(() => {
+      isSlidePlayed &&
+      setCounter(counter !== images.length - 1 ? counter + 1 : 0)
+    }, slideshowSpeed * 1000);
+
+    return () => clearInterval(accountInterval);
+  }, [counter, images.length, isSlidePlayed, slideshowSpeed]);
 
   const prepareAdd = () => {
     const newTask = {
@@ -40,6 +54,13 @@ const Home = () => {
     <div id='homeMainContainer'>
       <Header />
       <main>
+        {!useWhiteBack &&
+        <div id="backgroundImageWrapper">
+          <div></div>
+          {images.map((image, index) =>
+            <img style={{opacity: counter === index ? 1 : 0, transition: slideshowSpeed/2 + 's'}} key={image} src={image} alt="Image" />
+          )}
+        </div>}
         <h1
         id='addNewTaskBtn'
         onClick={() => setMenu(!menu)} style={ menu ? {transform: 'rotate(135deg)', top: '130px', left: '50px'} : {transform: 'rotate(0deg)', top: '100px', left: '0'}}

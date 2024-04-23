@@ -4,7 +4,11 @@ const initialState = {
     menu: false,
     header: JSON.parse(localStorage.getItem('headerSettings')) || {},
     tasks: JSON.parse(localStorage.getItem('taskSettings')) || {},
-    boards: JSON.parse(localStorage.getItem('boardSettings')) || {}
+    boards: JSON.parse(localStorage.getItem('boardSettings')) || {},
+    gallery: JSON.parse(localStorage.getItem('gallery')) || [],
+    slideshowSpeed: localStorage.slideshowSpeed || 2,
+    isSlidePlayed: JSON.parse(localStorage.getItem('isSlidePlayed')) || false,
+    useWhiteBack: JSON.parse(localStorage.getItem('useWhiteBack')) || false
 }
 
 const settingsSlice = createSlice({
@@ -62,6 +66,31 @@ const settingsSlice = createSlice({
             state.boards = {};
             localStorage.removeItem('boardSettings');
         },
+        handleNewImage: (state, action) => {
+            if(state.gallery.some(image => image === action.payload)){
+                alert('Image is already uploaded');
+            } else {
+                state.gallery = [...state.gallery, action.payload];
+                localStorage.setItem('gallery', JSON.stringify(state.gallery));
+            }
+        },
+        handleDeleteImage: (state, action) => {
+            state.gallery = state.gallery.filter(image => image !== action.payload);
+            localStorage.setItem('gallery', JSON.stringify(state.gallery));
+        },
+        handleSlideshowSpeed: (state, action) => {
+            state.slideshowSpeed = action.payload;
+            localStorage.slideshowSpeed = state.slideshowSpeed;
+        },
+        handlePauseSlideshow: (state) => {
+            state.isSlidePlayed = !state.isSlidePlayed;
+            localStorage.setItem('isSlidePlayed', JSON.stringify(state.isSlidePlayed));
+        },
+        handleWhiteBack: (state) => {
+            state.useWhiteBack = !state.useWhiteBack;
+            localStorage.setItem('useWhiteBack', JSON.stringify(state.useWhiteBack));
+            if(state.useWhiteBack) state.isSlidePlayed = false;
+        },
         handleReset: (state) => {
             state.header = {};
             localStorage.removeItem('headerSettings');
@@ -80,6 +109,11 @@ export const { handleMenu,
     handleResetTask,
     handleBoards,
     handleResetBoard,
+    handleNewImage,
+    handleDeleteImage,
+    handleSlideshowSpeed,
+    handlePauseSlideshow,
+    handleWhiteBack,
     handleReset
 } = settingsSlice.actions;
 
