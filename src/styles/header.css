@@ -26,7 +26,10 @@ header nav {
     user-select: none;
     min-height: 85px;
 }
-
+nav > div:nth-child(1){
+    display: flex;
+    align-items: center;
+}
 nav img {
     width: 2.2cm;
 }
