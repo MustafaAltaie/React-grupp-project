@@ -4,8 +4,8 @@ import Login from './components/login/Login';
 import About from './components/about/About';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Admin from './components/admin/Admin';
-import Progress from './components/home/Progress';
-import TaskList from './components/home/TaskList';
+import Progress from './components/progress/Progress';
+import TaskList from './components/taskList/TaskList';
 
 function App() {
 

@@ -177,10 +177,10 @@ main{
 }
 .listTask{
     width: 100%;
-    min-height: 100px;
-    max-height: 100px;
+    min-height: 90px;
+    max-height: 90px;
     background: #eee;
-    border: solid 1px #06f;
+    border: solid 2px #06f;
     transform: translateX(-100%);
     display: flex;
     align-items: center;
