@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Colums from "./Colums";
 import Header from "./Header";
 import Settings from "./Settings";
+import Clock from "./Clock";
 
 const Home = () => {
   const [menu, setMenu] = useState(false);
@@ -20,16 +21,17 @@ const Home = () => {
   const slideshowSpeed = useSelector(state => state.settings.slideshowSpeed);
   const images = useSelector(state => state.settings.gallery);
   const useWhiteBack = useSelector(state => state.settings.useWhiteBack);
+  const clockBackground = useSelector(state => state.settings.clockBackground);
   const [counter, setCounter] = useState(0);
 
   useEffect(() => {
     const accountInterval = setInterval(() => {
-      isSlidePlayed &&
+      isSlidePlayed && !clockBackground &&
       setCounter(counter !== images.length - 1 ? counter + 1 : 0)
     }, slideshowSpeed * 1000);
 
     return () => clearInterval(accountInterval);
-  }, [counter, images.length, isSlidePlayed, slideshowSpeed]);
+  }, [counter, images.length, isSlidePlayed, slideshowSpeed, clockBackground]);
 
   const prepareAdd = () => {
     const newTask = {
@@ -50,6 +52,7 @@ const Home = () => {
     : setAssignees([...assignees, user]);
   }
 
+
   return (
     <div id='homeMainContainer'>
       <Header />
@@ -57,9 +60,28 @@ const Home = () => {
         {!useWhiteBack &&
         <div id="backgroundImageWrapper">
           <div></div>
-          {images.map((image, index) =>
+          {clockBackground &&
+          <div className='clockInnerWrapper' style={{
+            transform: 'perspective(586px) rotateX(15deg) rotateY(-34deg) rotate(-90deg)',
+            top: '58%',
+            left: '43%'
+          }}>
+            <Clock />
+          </div>}
+          {clockBackground &&
+          <div className='clockInnerWrapper' style={{
+            transform: 'perspective(586px) rotateX(15deg) rotateY(60deg) rotate(-90deg)',
+            top: '60%',
+            left: '60.5%'
+          }}>
+            <Clock />
+          </div>}
+          {!clockBackground && images.map((image, index) =>
             <img style={{opacity: counter === index ? 1 : 0, transition: slideshowSpeed/2 + 's'}} key={image} src={image} alt="Image" />
           )}
+          {clockBackground &&
+            <img src='https://i.ibb.co/zHMbhLV/homePic5.jpg' alt="Image" />
+          }
         </div>}
         <h1
         id='addNewTaskBtn'
