@@ -8,7 +8,8 @@ const initialState = {
     gallery: JSON.parse(localStorage.getItem('gallery')) || [],
     slideshowSpeed: localStorage.slideshowSpeed || 2,
     isSlidePlayed: JSON.parse(localStorage.getItem('isSlidePlayed')) || false,
-    useWhiteBack: JSON.parse(localStorage.getItem('useWhiteBack')) || false
+    useWhiteBack: JSON.parse(localStorage.getItem('useWhiteBack')) || false,
+    clockBackground: JSON.parse(localStorage.getItem('clockBackground')) || false
 }
 
 const settingsSlice = createSlice({
@@ -90,6 +91,16 @@ const settingsSlice = createSlice({
             state.useWhiteBack = !state.useWhiteBack;
             localStorage.setItem('useWhiteBack', JSON.stringify(state.useWhiteBack));
             if(state.useWhiteBack) state.isSlidePlayed = false;
+            if(!state.useWhiteBack){
+                state.clockBackground = false;
+                localStorage.setItem('clockBackground', JSON.stringify(state.clockBackground));
+            }
+        },
+        handleClockBackground: (state) => {
+            state.clockBackground = !state.clockBackground;
+            state.useWhiteBack = false;
+            localStorage.setItem('useWhiteBack', JSON.stringify(state.useWhiteBack));
+            localStorage.setItem('clockBackground', JSON.stringify(state.clockBackground));
         },
         handleReset: (state) => {
             state.header = {};
@@ -114,6 +125,7 @@ export const { handleMenu,
     handleSlideshowSpeed,
     handlePauseSlideshow,
     handleWhiteBack,
+    handleClockBackground,
     handleReset
 } = settingsSlice.actions;
 

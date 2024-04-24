@@ -1,11 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
     handleNewImage,
     handleDeleteImage,
     handleSlideshowSpeed,
     handlePauseSlideshow,
-    handleWhiteBack
+    handleWhiteBack,
+    handleClockBackground
 } from "../../features/settingsSlice";
 
 const Gallery = () => {
@@ -18,17 +19,26 @@ const Gallery = () => {
     const slideshowSpeed = useSelector(state => state.settings.slideshowSpeed);
     const isSlidePlayed = useSelector(state => state.settings.isSlidePlayed);
     const useWhiteBack = useSelector(state => state.settings.useWhiteBack);
+    const clockBackground = useSelector(state => state.settings.clockBackground);
+    const gallery = useRef(null);
 
     useEffect(() => {
         setSpeed(parseInt(slideshowSpeed, 10));
     }, [slideshowSpeed]);
 
     const handleKeyDown = (e) => {
-        e.key === 'Enter' && e.target.value.trim() && (
-            setInput(false),
-            dispatch(handleNewImage(e.target.value))
-        )
-        e.key === 'Escape' && setInput(false);
+        if (e.key === 'Enter' && e.target.value.trim()) {
+            setSettings(100);
+            dispatch(handleNewImage(e.target.value));
+            setInput(false);
+            if (gallery.current)
+            setTimeout(() => {
+                gallery.current.scrollTop = gallery.current.scrollHeight;
+            }, 10);
+        }
+        if (e.key === 'Escape') {
+            setInput(false);
+        }
     }
 
     return (
@@ -42,18 +52,19 @@ const Gallery = () => {
                 <p onClick={() => (setInput(!input), setSpeedInput(false))}>Add Image +</p>
                 {input &&
                 <input type="text" autoFocus onKeyDown={handleKeyDown} />}
-                {!useWhiteBack &&
+                {!useWhiteBack && !clockBackground &&
                 <p onClick={() => (setSpeedInput(!speedInput), setSpeed(''), setInput(false))}>Slideshow Speed</p>}
                 {speedInput &&
                 <input type="range" min='1' max='10' value={speed || slideshowSpeed} onChange={e => setSpeed(parseInt(e.target.value, 10))} />}
                 {speed && speedInput &&
                 <p onClick={() => (dispatch(handleSlideshowSpeed(speed)), setSpeedInput(false))} style={{background: '#aca'}}>Apply {speed}s</p>}
-                {!useWhiteBack &&
+                {!useWhiteBack && !clockBackground &&
                 <p onClick={() => dispatch(handlePauseSlideshow())}>{isSlidePlayed ? 'Pause' : 'Play'} Slideshow</p>}
                 <p onClick={() => dispatch(handleWhiteBack())}>{useWhiteBack ? 'Use Image Background' : 'Use White Background'}</p>
-                <p onClick={() => (setSettings(100), setSpeedInput(false), setInput(false))}>Close Menu</p>
+                <p onClick={() => dispatch(handleClockBackground())}>{clockBackground ? 'Use Image Background' : 'Clock Background'}</p>
+                <p onClick={() => (setSettings(100), setSpeedInput(false), setInput(false))} style={{color: '#f00'}}>Close Menu</p>
             </div>
-            <div id='gallery'>
+            <div id='gallery' ref={gallery}>
                 {images.map((image, index) =>
                 <div
                 key={image}

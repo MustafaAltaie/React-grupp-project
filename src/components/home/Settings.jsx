@@ -10,9 +10,9 @@ const Settings = () => {
     const dispatch = useDispatch();
     const menu = useSelector(state => state.settings.menu);
     const [header, setHeader] = useState(false);
-    const [tasks, setTasks] = useState(true);
+    const [tasks, setTasks] = useState(false);
     const [boards, setBoards] = useState(false);
-    const [gallery, setGallery] = useState(false);
+    const [gallery, setGallery] = useState(true);
 
     return (
         <div id='settingsContainer' style={{pointerEvents: menu ? 'unset' : 'none'}}>
