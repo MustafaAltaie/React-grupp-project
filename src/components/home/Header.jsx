@@ -58,7 +58,7 @@ const Header = () => {
                     )}
                 </ul>
                 <div>
-                    <NavLink to='/progress'>
+                    <NavLink to='/'>
                         <p style={headerTextStyle}>Progress</p>
                         <div style={progressStyle}>
                             <div id='progressInnerCircle' style={{
