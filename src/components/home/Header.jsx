@@ -44,11 +44,12 @@ const Header = () => {
     return (
         <header>
             <nav style={headerStyle}>
-                <img src="/src/images/logo.png" alt="Logo" style={{width: logoSize ? logoSize + 'px' : '83px'}} />
-                <ul>
-                    <li>Task List</li>
-                    <li>My Tasks</li>
-                </ul>
+                <div>
+                    <img src="/src/images/logo.png" alt="Logo" style={{width: logoSize ? logoSize + 'px' : '83px'}} />
+                    <NavLink to='/taskList'>
+                        <p>Task List</p>
+                    </NavLink>
+                </div>
                 <ul style={{gap: wordSpace ? wordSpace + 'px' : '5px'}}>
                     <li style={headerTextStyle} onClick={() => dispatch(columnDisplayHandler(null))}>Show all</li>
                     <li style={headerTextStyle} onClick={() => dispatch(columnDisplayHandler('Todo'))}>Todo</li>
@@ -74,7 +75,7 @@ const Header = () => {
                     <NavLink to='/about'>
                         <p style={headerTextStyle}>About</p>
                     </NavLink>
-                    <NavLink to='admin'>
+                    <NavLink to='/admin'>
                         <p style={headerTextStyle}>Admin <i className="fas fa-users-cog"></i></p>
                     </NavLink>
                     <div id="navSetting" title='Settings' onClick={() => dispatch(handleMenu(true))}>
