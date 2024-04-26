@@ -34,10 +34,13 @@ const loginSlice = createSlice({
                 data.email === action.payload.email && data.password === action.payload.password
             );
             localStorage.setItem('userAccount', JSON.stringify(state.loginDatabase.filter(user => user.email === action.payload.email)));
+        },
+        handleLogout: (state) => {
+            state.isLogedin = false;
         }
     }
 });
 
-export const { addUser, signinHandler } = loginSlice.actions;
+export const { addUser, signinHandler, handleLogout } = loginSlice.actions;
 
 export default loginSlice.reducer;

@@ -91,6 +91,7 @@ const settingsSlice = createSlice({
             state.useWhiteBack = !state.useWhiteBack;
             localStorage.setItem('useWhiteBack', JSON.stringify(state.useWhiteBack));
             if(state.useWhiteBack) state.isSlidePlayed = false;
+            else state.isSlidePlayed = true;
             if(!state.useWhiteBack){
                 state.clockBackground = false;
                 localStorage.setItem('clockBackground', JSON.stringify(state.clockBackground));
@@ -101,6 +102,8 @@ const settingsSlice = createSlice({
             state.useWhiteBack = false;
             localStorage.setItem('useWhiteBack', JSON.stringify(state.useWhiteBack));
             localStorage.setItem('clockBackground', JSON.stringify(state.clockBackground));
+            if(state.clockBackground) state.isSlidePlayed = false;
+            else state.isSlidePlayed = true;
         },
         handleReset: (state) => {
             state.header = {};

@@ -33,6 +33,12 @@ nav > div:nth-child(1){
 nav img {
     width: 2.2cm;
 }
+header a{
+    cursor: pointer;
+}
+header button{
+    margin-right: 10px;
+}
 
 nav ul {
     display: flex;
@@ -68,6 +74,12 @@ nav > div > a{
 nav > div > a:hover{
     background: #00000011;
 }
+nav > div > a:nth-child(1){
+    cursor: context-menu;
+}
+nav > div > a:nth-child(1):hover{
+    background: unset;
+}
 
 .btn {
     cursor: pointer;
@@ -100,4 +112,14 @@ nav > div > a:hover{
 }
 #navSetting:hover > div{
     background: #06f;
+}
+
+#headerLeft{
+    align-items: center;
+}
+#userImage{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    cursor: pointer;
 }
