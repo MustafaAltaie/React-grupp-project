@@ -57,12 +57,12 @@ const Gallery = () => {
                 {speedInput &&
                 <input type="range" min='1' max='10' value={speed || slideshowSpeed} onChange={e => setSpeed(parseInt(e.target.value, 10))} />}
                 {speed && speedInput &&
-                <p onClick={() => (dispatch(handleSlideshowSpeed(speed)), setSpeedInput(false))} style={{background: '#aca'}}>Apply {speed}s</p>}
+                <p onClick={() => (dispatch(handleSlideshowSpeed(speed)), setSpeedInput(false))} style={{background: '#373'}}>Apply {speed}s</p>}
                 {!useWhiteBack && !clockBackground &&
                 <p onClick={() => dispatch(handlePauseSlideshow())}>{isSlidePlayed ? 'Pause' : 'Play'} Slideshow</p>}
                 <p onClick={() => dispatch(handleWhiteBack())}>{useWhiteBack ? 'Use Image Background' : 'Use White Background'}</p>
                 <p onClick={() => dispatch(handleClockBackground())}>{clockBackground ? 'Use Image Background' : 'Clock Background'}</p>
-                <p onClick={() => (setSettings(100), setSpeedInput(false), setInput(false))} style={{color: '#f00'}}>Close Menu</p>
+                <p onClick={() => (setSettings(100), setSpeedInput(false), setInput(false))}>Close Menu</p>
             </div>
             <div id='gallery' ref={gallery}>
                 {images.map((image, index) =>

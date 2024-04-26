@@ -89,6 +89,7 @@
 
 /* Task */
 .task{
+  position: relative;
   border: solid 1px #005fa8;
   background: #ddd;
   border-radius: 10px;
@@ -114,7 +115,11 @@
   font-weight: bold;
 }
 .taskSettingBtn{
+  position: absolute;
+  top: 10px;
+  left: 0;
   display: flex;
+  flex-direction: column;
   opacity: 0;
   pointer-events: none;
   justify-content: center;
@@ -169,4 +174,26 @@
 .taskFooter > div > p{
   color: #555;
   font-size: 12px;
+}
+
+#taskSettingMenu{
+  z-index: 100;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  border: solid 1px #aaa;
+  border-radius: 10px;
+  overflow: hidden;
+}
+#taskSettingMenu > p{
+  text-align: center;
+  padding: 10px 40px;
+  border-bottom: solid 1px #ffffff33;
+  background: #2d5084;
+  color: #fff;
+  cursor: pointer;
+  font-family: 'Thasadith', sans-serif;
+}
+#taskSettingMenu > p:hover{
+  filter: brightness(120%);
 }

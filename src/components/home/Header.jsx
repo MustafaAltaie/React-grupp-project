@@ -2,6 +2,10 @@ import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { columnDisplayHandler } from "../../features/columnSlice";
 import { handleMenu } from "../../features/settingsSlice";
+import { useState } from "react";
+import { useNavigate  } from "react-router-dom";
+import { handleLogout } from "../../features/loginSlice";
+import { handleFilterTasks } from "../../features/taskSlice";
 
 const Header = () => {
     const columns = useSelector(state => state.columns.columns);
@@ -13,6 +17,10 @@ const Header = () => {
     const textSize = style.textSize;
     const textColor = style.textColor;
     const wordSpace = style.wordSpace;
+    const myAccount = JSON.parse(localStorage.getItem('userAccount'));
+    const filterTasks = useSelector(state => state.tasks.filterTasks);
+    const [signOut, setSignOut] = useState(false);
+    const navigate = useNavigate();
 
     const tasks = useSelector(state => state.tasks.tasks);
     let done = 0;
@@ -41,6 +49,13 @@ const Header = () => {
         color: textColor
     }
 
+    const handleSignout = () => {
+        localStorage.removeItem('userAccount');
+        delete localStorage.isLogedin;
+        dispatch(handleLogout());
+        navigate('/login');
+    }
+
     return (
         <header>
             <nav style={headerStyle}>
@@ -49,6 +64,8 @@ const Header = () => {
                     <NavLink to='/taskList'>
                         <p>Task List</p>
                     </NavLink>
+                    {myAccount &&
+                    <a onClick={() => {dispatch(handleFilterTasks(!filterTasks))}}>{filterTasks ? 'All Tasks' : 'My Tasks'}</a>}
                 </div>
                 <ul style={{gap: wordSpace ? wordSpace + 'px' : '5px'}}>
                     <li style={headerTextStyle} onClick={() => dispatch(columnDisplayHandler(null))}>Show all</li>
@@ -57,8 +74,8 @@ const Header = () => {
                         <li style={headerTextStyle} key={index} onClick={() => dispatch(columnDisplayHandler(column))}>{column}</li>
                     )}
                 </ul>
-                <div>
-                    <NavLink to='/'>
+                <div id='headerLeft'>
+                    <a>
                         <p style={headerTextStyle}>Progress</p>
                         <div style={progressStyle}>
                             <div id='progressInnerCircle' style={{
@@ -68,10 +85,14 @@ const Header = () => {
                                 }}>
                             </div>
                         </div>
-                    </NavLink>
+                    </a>
+                    {signOut &&
+                    <button onClick={handleSignout}>Sign-out</button>}
+                    {!myAccount ?
                     <NavLink to='/login'>
                         <p style={headerTextStyle}><i className="fas fa-user-alt"></i></p>
                     </NavLink>
+                    : <img id='userImage' src={myAccount[0].imageUrl} alt="User" onClick={() => setSignOut(!signOut)} />}
                     <NavLink to='/about'>
                         <p style={headerTextStyle}>About</p>
                     </NavLink>

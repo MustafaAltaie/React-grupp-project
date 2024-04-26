@@ -1,7 +1,8 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
 
 const initialState = {
-  tasks: JSON.parse(localStorage.getItem('items')) || []
+  tasks: JSON.parse(localStorage.getItem('items')) || [],
+  filterTasks: false
 }
 
 const taskSlice = createSlice({
@@ -31,10 +32,13 @@ const taskSlice = createSlice({
     updateTask: (state, {payload: { id, title, content, endDate }}) => {
       state.tasks = state.tasks.map(task => task.id === id ? {...task, title, content, endDate} : task);
       localStorage.setItem('items', JSON.stringify(state.tasks));
+    },
+    handleFilterTasks: (state, action) => {
+      state.filterTasks = action.payload;
     }
   }
 });
 
-export const { addTask, removeTask, updateTask } = taskSlice.actions;
+export const { addTask, removeTask, updateTask, handleFilterTasks } = taskSlice.actions;
 
 export default taskSlice.reducer;

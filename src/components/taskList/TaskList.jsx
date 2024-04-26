@@ -62,7 +62,7 @@ const TaskList = () => {
                             <img key={user.id} src={user.imageUrl} alt='UserImage' />
                             )}
                         </div>
-                        <div onClick={() => handleDelete(task.id)}></div>
+                        <div title='Delete' onClick={() => handleDelete(task.id)}></div>
                     </div>
                 )}
             </div>

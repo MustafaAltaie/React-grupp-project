@@ -27,7 +27,6 @@ const Signing = () => {
             localStorage.isLogedin = true;
             navigate('/');
         }
-        else console.log('Not signed in');
     }, [isLogedin, keepSigned, navigate]);
 
     const handleSignin = () => {

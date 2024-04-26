@@ -84,7 +84,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 5px;
-    max-height: 200px;
+    max-height: 250px;
     overflow-y: scroll;
     padding: 0;
     border-top: 10px solid #d2d2d2;
@@ -116,18 +116,24 @@
 }
 #gallerySettingsMenu > p, #gallerySettingsMenu > input[type='text']{
     outline: none;
-    background: #eee;
+    background: #295aa2;
     border-radius: 0;
     padding: 8px;
     margin-top: -1px;
-    border-top: solid 1px #bbb;
+    border-top: solid 1px #ffffff33;
     text-align: center;
-    font-size: 14px;
+    font-family: 'Thasadith', sans-serif;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+#gallerySettingsMenu > p{
+    color: #fff;
+    font-weight: normal;
 }
 #gallerySettingsMenu > input[type='text']{
     background: #fff;
 }
 #gallerySettingsMenu > p:hover{
-    background: #ddd;
+    background: #3a70c1;
     cursor: pointer;
 }
