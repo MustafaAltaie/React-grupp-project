@@ -197,3 +197,16 @@
 #taskSettingMenu > p:hover{
   filter: brightness(120%);
 }
+
+#taskShadow{
+  z-index: 100;
+  position: absolute;
+  width: 250px;
+  height: 150px;
+  left: -1000px;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+#taskShadow div{
+  background: #ddd;
+}

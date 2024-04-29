@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteColumnHandler } from "../../features/columnSlice";
 import Task from "./Task";
 
-const Column = ({ column, tasks }) => {
+const Column = ({ column, tasks,  handleMouseDown }) => {
     const [deleteColumn, setDeleteColumn] = useState(false);
     const dispatch = useDispatch();
     // Stored style by settings
@@ -48,7 +48,7 @@ const Column = ({ column, tasks }) => {
     }
 
     return (
-        <div className='column'
+        <div className='column' title={column}
         style={{
             ...storedStyle,
             ...(deleteColumn
@@ -60,11 +60,11 @@ const Column = ({ column, tasks }) => {
             <div className='columnWrapper' style={{gap: gap ? gap + 'px' : '20px'}}>
                 {filterTasks ?
                 tasks.map(task => (task.columnName === column && task.assignees.some(assignee => assignee.email === myAccount[0].email)) &&
-                <Task key={task.id} taskStyle={taskStyle} task={task} />
+                <Task key={task.id} taskStyle={taskStyle} task={task} handleMouseDown={handleMouseDown} />
                 )
             :
                 tasks.map(task => task.columnName === column &&
-                <Task key={task.id} taskStyle={taskStyle} task={task} />
+                <Task key={task.id} taskStyle={taskStyle} task={task} handleMouseDown={handleMouseDown} />
                 )
             }
             </div>
@@ -82,7 +82,8 @@ const Column = ({ column, tasks }) => {
 
 Column.propTypes = {
     column: propTypes.string,
-    tasks: propTypes.array
+    tasks: propTypes.array,
+    handleMouseDown: propTypes.func
 }
 
 export default Column;
