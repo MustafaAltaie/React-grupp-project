@@ -35,10 +35,14 @@ const taskSlice = createSlice({
     },
     handleFilterTasks: (state, action) => {
       state.filterTasks = action.payload;
+    },
+    handleTaskColumn: (state, action) => {
+      state.tasks = state.tasks.map(task => task.id === action.payload.id ? {...task, columnName: action.payload.columnName} : task);
+      localStorage.setItem('items', JSON.stringify(state.tasks));
     }
   }
 });
 
-export const { addTask, removeTask, updateTask, handleFilterTasks } = taskSlice.actions;
+export const { addTask, removeTask, updateTask, handleFilterTasks, handleTaskColumn } = taskSlice.actions;
 
 export default taskSlice.reducer;

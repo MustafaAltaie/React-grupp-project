@@ -1,24 +1,22 @@
 import TaskSettingMenu from "./TaskSettingMenu";
 import propTypes from 'prop-types';
-import { useDispatch, useSelector } from "react-redux";
-import { handleModal } from "../../features/modalSlice";
+import { useSelector } from "react-redux";
 import { useState } from "react";
 
-const Task = ({ taskStyle, task }) => {
+const Task = ({ taskStyle, task, handleMouseDown }) => {
     const style = useSelector(state => state.settings.tasks);
     const imageSize = style.imageSize;
-    const dispatch = useDispatch();
     const [menu, setMenu] = useState(false);
 
     return (
-        <div className='task' style={taskStyle}>
+        <div className='task' id={task.id} style={taskStyle} onMouseDown={handleMouseDown}>
             <div className='taskSettingBtn' onClick={() => setMenu(true)}>
                 <div></div>
                 <div></div>
                 <div></div>
             </div>
             <TaskSettingMenu setMenu={setMenu} menu={menu} task={task} />
-            <div onClick={() => dispatch(handleModal(task))}>
+            <div style={{pointerEvents: 'none'}}>
                 <div className='taskHeader'>
                     <div className="taskTitleSettingWrapper">
                         <p>{task.title}</p>
@@ -43,7 +41,8 @@ const Task = ({ taskStyle, task }) => {
 
 Task.propTypes = {
     taskStyle: propTypes.object,
-    task: propTypes.object
+    task: propTypes.object,
+    handleMouseDown: propTypes.func
 }
 
 export default Task;
