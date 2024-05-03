@@ -72,14 +72,6 @@ const Column = ({ column, tasks,  handleMouseDown }) => {
     )
 }
 
-// {filterTasks ?
-//     tasks.map(task => (task.columnName === 'Todo' && task.assignees.some(assignee => assignee.email === myAccount[0].email)) &&
-//       <Task key={task.id} taskStyle={taskStyle} task={task} />)
-//     : tasks.map(task => (task.columnName === 'Todo' &&
-//       <Task key={task.id} taskStyle={taskStyle} task={task} />
-//     ))
-//   }
-
 Column.propTypes = {
     column: propTypes.string,
     tasks: propTypes.array,
