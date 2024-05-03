@@ -5,7 +5,6 @@ import { handleMenu } from "../../features/settingsSlice";
 import { useState } from "react";
 import { useNavigate  } from "react-router-dom";
 import { handleLogout } from "../../features/loginSlice";
-import { handleFilterTasks } from "../../features/taskSlice";
 
 const Header = () => {
     const columns = useSelector(state => state.columns.columns);
@@ -18,7 +17,6 @@ const Header = () => {
     const textColor = style.textColor;
     const wordSpace = style.wordSpace;
     const myAccount = JSON.parse(localStorage.getItem('userAccount'));
-    const filterTasks = useSelector(state => state.tasks.filterTasks);
     const [signOut, setSignOut] = useState(false);
     const navigate = useNavigate();
 
@@ -64,15 +62,13 @@ const Header = () => {
                     <NavLink to='/taskList'>
                         <p>Task List</p>
                     </NavLink>
-                    {myAccount &&
-                    <a onClick={() => {dispatch(handleFilterTasks(!filterTasks))}}>{filterTasks ? 'All Tasks' : 'My Tasks'}</a>}
                 </div>
                 <ul style={{gap: wordSpace ? wordSpace + 'px' : '5px'}}>
                     <li style={headerTextStyle} onClick={() => dispatch(columnDisplayHandler(null))}>Show all</li>
-                    <li style={headerTextStyle} onClick={() => dispatch(columnDisplayHandler('Todo'))}>Todo</li>
                     {columns.map((column, index) =>
                         <li style={headerTextStyle} key={index} onClick={() => dispatch(columnDisplayHandler(column))}>{column}</li>
                     )}
+                    <li style={headerTextStyle} onClick={() => dispatch(columnDisplayHandler('Done'))}>Done</li>
                 </ul>
                 <div id='headerLeft'>
                     <a>

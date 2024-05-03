@@ -11,8 +11,8 @@ const columnSlice = createSlice({
     reducers: {
         newColumnHandler: (state, action) => {
             const columnName = action.payload;
-            let isUsed = state.columns.some(column => column === action.payload);
-            isUsed ? alert('Board has already been created') :
+            let isUsed = state.columns.some(column => column.toUpperCase() === action.payload.toUpperCase());
+            (isUsed || action.payload.toUpperCase() === 'DONE') ? alert('Board has already been created') :
             state.columns = [...state.columns, columnName];
             localStorage.setItem('columns', JSON.stringify(state.columns));
         },

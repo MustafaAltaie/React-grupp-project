@@ -54,18 +54,18 @@ const BoardSettings = () => {
                 <input type="range" min='0' max='50' value={boardBorderSize || 1} onChange={e => (setBoardBorderSize(e.target.value), handleBoardSettings())} />
             </div>
             <div>
-                <p>Board Sizes</p>
+                <p>Column Sizes</p>
                 <input type="range" min='200' max='700' value={boardBoardSize || 400} onChange={e => (setBoardBoardSize(e.target.value), handleBoardSettings())} />
             </div>
             <div>
-                <p>Gap Among Boards</p>
+                <p>Gap Among Columns</p>
                 <input type="range" min='0' max='80' value={boardGap || 0} onChange={e => (setBoardGap(e.target.value), handleBoardSettings())} />
             </div>
             <div>
                 <p>Corner Radius Degree</p>
-                <input type="range" min='0' max='100' value={boardRadius || 20} onChange={e => (setBoardRadius(e.target.value), handleBoardSettings())} />
+                <input type="range" min='0' max='100' value={boardRadius || 0} onChange={e => (setBoardRadius(e.target.value), handleBoardSettings())} />
             </div>
-            <i onClick={() => dispatch(handleResetBoard())}>Reset Board Settings</i>
+            <i onClick={() => dispatch(handleResetBoard())}>Reset Column Settings</i>
         </div>
     )
 }

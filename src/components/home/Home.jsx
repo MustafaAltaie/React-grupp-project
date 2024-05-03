@@ -107,10 +107,10 @@ const Home = () => {
             <input type="text" value={columnName} onChange={() => {}} />
             <select value={columnName} onChange={e => setColumnName(e.target.options[e.target.selectedIndex].value)}>
               <option value={''}>Choose Column</option>
-              <option value={'Todo'}>Todo</option>
               {columns.map(column =>
               <option value={column} key={column}>{column}</option>
-            )}
+              )}
+              <option value={'Done'}>Done</option>
             </select>
             <select value={priority} onChange={e => setPriority(e.target.options[e.target.selectedIndex].value)}>
               <option value={null}>Priority</option>

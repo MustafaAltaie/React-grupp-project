@@ -22,7 +22,7 @@ const Colums = () => {
   const borderSize = style.borderSize;
   const borderColor = style.borderColor;
   const taskColor = style.taskColor;
-  // Boards stored styles from settings
+  // Column stored styles from settings
   const boardStyle = useSelector(state => state.settings.boards);
   const boardBorderColor = boardStyle.borderColor;
   const boardBorderSize = boardStyle.borderSize;
@@ -30,14 +30,14 @@ const Colums = () => {
   const boardGap = boardStyle.gap;
   const boardRadius = boardStyle.radius;
   const filterTasks = useSelector(state => state.tasks.filterTasks);
-  const myAccount = JSON.parse(localStorage.getItem('userAccount'));
+  const chosenAssignee = useSelector(state => state.tasks.assignee);
   const taskShadow = useRef(null);
 
   const taskStyle = {
     padding: padding ? padding + 'px' : '20px',
-    borderRadius: radius ? radius + 'px' : '10px',
+    borderRadius: radius ? radius + 'px' : '0',
     border: `solid ${borderSize ? borderSize + 'px' : '1px'} ${borderColor ? borderColor : '#005fa8'}` || 'solid 1px #005fa8',
-    background: taskColor ? taskColor : '#f5f5f5',
+    background: taskColor ? taskColor : '#d5d5d5',
 }
 
   const prepareColumn = () => {
@@ -57,7 +57,7 @@ const Colums = () => {
     border: `solid ${boardBorderSize ? boardBorderSize + 'px' : '1px'} ${boardBorderColor ? boardBorderColor : '#005fa8'}`,
     minWidth: boardSize ? boardSize + 'px' : '400px',
     maxWidth: boardSize ? boardSize + 'px' : '400px',
-    borderRadius: boardRadius ? boardRadius + 'px' : '20px',
+    borderRadius: boardRadius ? boardRadius + 'px' : '0',
     marginRight: boardGap ? boardGap + 'px' : 0
   }
 
@@ -86,7 +86,7 @@ const Colums = () => {
     const handleColumns = (column) => {
       setChosenColumn(column);
       handleColumnStyle();
-      column.style.backgroundColor = '#ccc';
+      column.style.backgroundColor = '#afa';
     }
 
     // Handle the movement of tasks among columns
@@ -147,24 +147,25 @@ const Colums = () => {
   return (
   <div id='columnMainContainer' ref={mainSection}>
     <div className="columnContainer">
-      {(columnPath === null || columnPath === 'Todo') &&
-      <div className='column' title='Todo' style={storedStyle}>
-        <h2>Todo</h2>
+      {columns.map(column =>
+      (columnPath === column || columnPath === null) &&
+      <Column key={column} column={column} tasks={tasks} handleMouseDown={handleMouseDown} />
+      )}
+
+      {(columnPath === null || columnPath === 'Done') &&
+      <div className='column' title='Done' style={storedStyle}>
+        <h2>Done</h2>
         <div className='columnWrapper' style={{gap: gap ? gap + 'px' : '20px'}}>
           {filterTasks ?
-            tasks.map(task => (task.columnName === 'Todo' &&
-            task.assignees.some(assignee => assignee.email === myAccount[0].email)) &&
+            tasks.map(task => (task.columnName === 'Done' &&
+            task.assignees.some(assignee => assignee.email === chosenAssignee.email)) &&
               <Task key={task.id} taskStyle={taskStyle} task={task} handleMouseDown={handleMouseDown} />)
-            : tasks.map(task => (task.columnName === 'Todo' &&
+          : tasks.map(task => (task.columnName === 'Done' &&
               <Task key={task.id} taskStyle={taskStyle} task={task} handleMouseDown={handleMouseDown} />
             ))
           }
         </div>
       </div>}
-      {columns.map(column =>
-      (columnPath === column || columnPath === null) &&
-      <Column key={column} column={column} tasks={tasks} handleMouseDown={handleMouseDown} />
-      )}
 
       {columnMenu &&
       <div id="newFormMenu">
@@ -178,7 +179,7 @@ const Colums = () => {
       </div>}
 
       <h1
-      title={columnMenu ? 'Close' : 'New Board'}
+      title={columnMenu ? 'Close' : 'New Column'}
       onClick={() => setColumnMenu(!columnMenu)}
       style={{transform: `rotate(${columnMenu ? 135 : 0}deg)`}}
       >+</h1>

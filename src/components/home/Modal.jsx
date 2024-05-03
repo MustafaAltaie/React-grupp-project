@@ -73,7 +73,7 @@ const Modal = () => {
                 )}
             </div>
             <div id='modalSettings'>
-                <h4>Task is located in <span>{task.columnName}</span> board</h4>
+                <h4>Task is located in <span>{task.columnName}</span> Column</h4>
                 {!isEdit &&
                 <button onClick={() => (dispatch(removeTask(task.id), dispatch(handleCloseModal(false))))}>Delete</button>}
                 <button onClick={() => handleEditOrUpdate()} style={{width: `${isEdit ? '500' : '200'}px`}}>{isEdit ? 'Save Changes' : 'Edit'}</button>
