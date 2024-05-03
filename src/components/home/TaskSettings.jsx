@@ -70,7 +70,7 @@ const TaskSettings = () => {
             </div>
             <div>
                 <p>Corner Radius Degree</p>
-                <input type="range" min='0' max='100' value={radius || 10} onChange={e => (setRadius(e.target.value), handleTaskSettings())} />
+                <input type="range" min='0' max='100' value={radius || 0} onChange={e => (setRadius(e.target.value), handleTaskSettings())} />
             </div>
             <div>
                 <p>Border Thickness</p>

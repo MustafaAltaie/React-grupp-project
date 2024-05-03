@@ -1,12 +1,16 @@
 import TaskSettingMenu from "./TaskSettingMenu";
 import propTypes from 'prop-types';
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
+import { handleFilterTasks } from "../../features/taskSlice";
 
 const Task = ({ taskStyle, task, handleMouseDown }) => {
     const style = useSelector(state => state.settings.tasks);
     const imageSize = style.imageSize;
     const [menu, setMenu] = useState(false);
+    const dispatch = useDispatch();
+    const chosenAssignee = useSelector(state => state.tasks.assignee);
+    const filterTasks = useSelector(state => state.tasks.filterTasks);
 
     return (
         <div className='task' id={task.id} style={taskStyle} onMouseDown={handleMouseDown}>
@@ -23,7 +27,14 @@ const Task = ({ taskStyle, task, handleMouseDown }) => {
                     </div>
                     <div className='taskImageWrapper'>
                         {task.assignees.map(user =>
-                        <img key={user.id} style={{width: imageSize ? imageSize + 'px' : '35px', height: imageSize ? imageSize + 'px' : '35px'}} src={user.imageUrl} alt="Image" />)}
+                        <img
+                        className={(user.email === chosenAssignee.email && filterTasks) ? 'chosenUser' : ''}
+                        key={user.id}
+                        style={{width: imageSize ? imageSize + 'px' : '35px', height: imageSize ? imageSize + 'px' : '35px', border: (user.email === chosenAssignee.email && filterTasks) ? 'solid 4px #5f5' : 'none'}}
+                        src={user.imageUrl}
+                        alt="Image"
+                        onClick={() => {dispatch(handleFilterTasks(user))}}
+                        />)}
                     </div>
                 </div>
                 <p className='taskContent'>{task.content}</p>

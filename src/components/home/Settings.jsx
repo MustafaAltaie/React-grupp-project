@@ -38,10 +38,10 @@ const Settings = () => {
                     <TaskSettings />
                     }
                 </div>
-                {/* Boards */}
+                {/* Columns */}
                 <div className="taskSettings">
                     <div className="settingHeader" onClick={() => (setBoards(!boards), setHeader(false), setTasks(false), setGallery(false))}>
-                        <h3>Board Settings</h3>
+                        <h3>Column Settings</h3>
                         <i className={`fas fa-chevron-${boards ? 'down' : 'up'}`}></i>
                     </div>
                     {boards &&
@@ -58,7 +58,7 @@ const Settings = () => {
                     <Gallery />
                     }
                 </div>
-                <button onClick={() => dispatch(handleReset())}>Reset All Settings</button>
+                <button onClick={() => (dispatch(handleReset()), dispatch((handleMenu(false))))}>Reset All Settings</button>
             </div>
         </div>
     )

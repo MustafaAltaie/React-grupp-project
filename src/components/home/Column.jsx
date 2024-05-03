@@ -16,7 +16,7 @@ const Column = ({ column, tasks,  handleMouseDown }) => {
     const borderSize = style.borderSize;
     const borderColor = style.borderColor;
     const taskColor = style.taskColor;
-    // Boards stored styles from settings
+    // Columns stored styles from settings
     const boardStyle = useSelector(state => state.settings.boards);
     const boardBorderColor = boardStyle.borderColor;
     const boardBorderSize = boardStyle.borderSize;
@@ -24,13 +24,13 @@ const Column = ({ column, tasks,  handleMouseDown }) => {
     const boardGap = boardStyle.gap;
     const boardRadius = boardStyle.radius;
     const filterTasks = useSelector(state => state.tasks.filterTasks);
-    const myAccount = JSON.parse(localStorage.getItem('userAccount'));
+    const chosenAssignee = useSelector(state => state.tasks.assignee);
 
     const taskStyle = {
         padding: padding ? padding + 'px' : '20px',
-        borderRadius: radius ? radius + 'px' : '10px',
+        borderRadius: radius ? radius + 'px' : '0',
         border: `solid ${borderSize ? borderSize + 'px' : '1px'} ${borderColor ? borderColor : '#005fa8'}` || 'solid 1px #005fa8',
-        background: taskColor ? taskColor : '#f5f5f5',
+        background: taskColor ? taskColor : '#d5d5d5',
     }
 
     const handleDeleteColumn = () => {
@@ -43,7 +43,7 @@ const Column = ({ column, tasks,  handleMouseDown }) => {
         border: `solid ${boardBorderSize ? boardBorderSize + 'px' : '1px'} ${boardBorderColor ? boardBorderColor : '#005fa8'}`,
         minWidth: boardSize ? boardSize + 'px' : '400px',
         maxWidth: boardSize ? boardSize + 'px' : '400px',
-        borderRadius: boardRadius ? boardRadius + 'px' : '20px',
+        borderRadius: boardRadius ? boardRadius + 'px' : '0',
         marginRight: boardGap ? boardGap + 'px' : 0
     }
 
@@ -59,7 +59,7 @@ const Column = ({ column, tasks,  handleMouseDown }) => {
             <h5 className='deleteColumnBtn' onClick={() => (setDeleteColumn(true), handleDeleteColumn())}>Delete {column}</h5>
             <div className='columnWrapper' style={{gap: gap ? gap + 'px' : '20px'}}>
                 {filterTasks ?
-                tasks.map(task => (task.columnName === column && task.assignees.some(assignee => assignee.email === myAccount[0].email)) &&
+                tasks.map(task => (task.columnName === column && task.assignees.some(assignee => assignee.email === chosenAssignee.email)) &&
                 <Task key={task.id} taskStyle={taskStyle} task={task} handleMouseDown={handleMouseDown} />
                 )
             :

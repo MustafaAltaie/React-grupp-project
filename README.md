@@ -6,4 +6,21 @@ Currently, two official plugins are available:
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-"# React-grupp-project" 
+
+---
+
+# React Grupp Projekt
+
+## Deltagare
+- Ahmed Tememi
+- Ibrahim Sheikh
+- Mustafa Altaie
+- Moutasem Abou Arshid
+
+## Projektinformation
+- **Projektnamn:** React-grupp-project
+- **Skolnamn:** Chas academy
+- **Gruppnamn:** Team Anywhere
+
+## Installation
+git clone https://github.com/MustafaAltaie/React-grupp-project.git
